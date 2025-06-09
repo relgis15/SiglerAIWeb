@@ -53,14 +53,14 @@ export default function App() {
   };
 
   return (
-    <div className="w-full h-full bg-transparent flex items-center justify-center p-4 font-inter">
-      <div className="w-full max-w-sm h-[600px] bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden border border-gray-200">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-4 font-inter">
+      <div className="w-full max-w-sm h-[600px] bg-white rounded-2xl shadow-xl flex flex-col overflow-hidden border border-gray-200">
         {/* Header */}
-        <div className="bg-blue-600 text-white text-lg font-semibold px-4 py-3">
+        <div className="bg-blue-600 text-white text-lg font-semibold px-4 py-3 shadow-sm">
           Chat with SiglerAI
         </div>
 
-        {/* Messages */}
+        {/* Messages area */}
         <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2 bg-gray-50 text-sm">
           {messages.map((msg, i) => (
             <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -78,30 +78,30 @@ export default function App() {
           {isTyping && (
             <div className="flex justify-start">
               <div className="px-4 py-2 rounded-2xl bg-gray-200 text-gray-800 flex gap-1 animate-pulse">
-                <span className="dot">.</span>
-                <span className="dot">.</span>
-                <span className="dot">.</span>
+                <span>.</span><span>.</span><span>.</span>
               </div>
             </div>
           )}
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input */}
-        <div className="border-t border-gray-200 px-3 py-2 flex items-center gap-2 bg-white">
-          <input
-            className="flex-1 text-sm px-3 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Type your message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-          />
-          <button
-            onClick={sendMessage}
-            className="bg-blue-600 text-white text-sm px-4 py-2 rounded-full hover:bg-blue-700 transition"
-          >
-            Send
-          </button>
+        {/* Input area */}
+        <div className="border-t border-gray-300 bg-white px-3 py-3 shadow-inner">
+          <div className="flex items-center gap-2">
+            <input
+              className="flex-1 text-sm px-4 py-2 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Type your message..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+            />
+            <button
+              onClick={sendMessage}
+              className="bg-blue-600 text-white text-sm px-4 py-2 rounded-full hover:bg-blue-700 transition"
+            >
+              Send
+            </button>
+          </div>
         </div>
       </div>
     </div>
