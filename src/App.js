@@ -7,7 +7,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const chatflowId = '60f1e766-b99e-48e2-8022-a43630b4a540';
-  const flowiseURL = 'https://siglerai.onrender.com';
+  const flowiseURL = 'https://api.siglerai.com';
 
   const sendMessage = async () => {
     if (!input.trim()) return;
